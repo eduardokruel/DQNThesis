@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH –t 0:20:00
+#SBATCH --time=00:15:00
 #SBATCH –N 1
 –c 24
 
