@@ -6,6 +6,6 @@
 module load python/
 cp -r $HOME/run3 $TMPDIR
 cd $TMPDIR/run3
-python myscript.py
+python test.py
 mkdir -p $HOME/run3/results
-cpresult.dat run3.log $HOME/run3/results
+cp result.dat run3.log $HOME/run3/results
