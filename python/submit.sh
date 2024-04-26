@@ -4,8 +4,8 @@
 -c 24
 
 module load python/
-cp -r $HOME/run3 $TMPDIR
-cd $TMPDIR/run3
+cp -r $HOME/python $TMPDIR
+cd $TMPDIR/python
 python test.py
-mkdir -p $HOME/run3/results
+mkdir -p $HOME/python/results
 cp result.dat run3.log $HOME/run3/results
