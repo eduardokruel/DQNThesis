@@ -3,7 +3,7 @@
 #SBATCH -N 1
 -c 24
 
-module load python/
+
 cp -r $HOME/slurm-bpai-tutorial/python $TMPDIR
 cd $TMPDIR/python
 python script.py
