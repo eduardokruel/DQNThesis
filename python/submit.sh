@@ -4,8 +4,8 @@
 -c 24
 
 module load python/
-cp -r $HOME/python $TMPDIR
+cp -r $HOME/slurm-bpai-tutorial/python $TMPDIR
 cd $TMPDIR/python
-python test.py
-mkdir -p $HOME/python/results
-cp result.dat run3.log $HOME/run3/results
+python script.py
+mkdir -p $HOME/slurm-bpai-tutorial/python/results
+cp result.dat run3.log $HOME/slurm-bpai-tutorial/python/results
