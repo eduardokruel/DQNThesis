@@ -5,6 +5,7 @@
 mkdir -p $TMPDIR/etl360
 cp -r $HOME/slurm-bpai-tutorial/python $TMPDIR/etl360
 cd $TMPDIR/etl360/python
+conda init dqn39
 conda activate dqn39
 python script.py
 rm -rf $TMPDIR/etl360/python
