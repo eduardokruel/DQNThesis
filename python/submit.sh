@@ -1,11 +1,10 @@
 #!/bin/sh
 #SBATCH --time=00:15:00
 #SBATCH -N 1
--c 24
 
-
-cp -r $HOME/slurm-bpai-tutorial/python $TMPDIR
-cd $TMPDIR/python
+mkdir -p $TMPDIR/etl360
+cp -r $HOME/slurm-bpai-tutorial/python $TMPDIR/etl360
+cd $TMPDIR/etl360/python
+conda activate dqn39
 python script.py
-mkdir -p $HOME/slurm-bpai-tutorial/python/results
-cp result.dat run3.log $HOME/slurm-bpai-tutorial/python/results
+rm -rf $TMPDIR/etl360/python
