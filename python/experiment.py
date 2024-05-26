@@ -5,7 +5,7 @@ from agilerl.components.multi_agent_replay_buffer import MultiAgentReplayBuffer
 import numpy as np
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-env = wizard_of_wor_v3.parallel_env(max_cycles=25, continuous_actions=True)
+env = wizard_of_wor_v3.parallel_env()
 env.reset()
 
 # Configure the multi-agent algo input arguments
