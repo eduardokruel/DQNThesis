@@ -50,8 +50,8 @@ print(one_hot)
 
 agents = []
 for agent_index, agent_id in enumerate(agent_ids):
-    agents.append(DQN(state_dims=state_dim[agent_index],
-                action_dims=action_dim[agent_index],
+    agents.append(DQN(state_dim=state_dim[agent_index],
+                action_dim=action_dim[agent_index],
                 one_hot=one_hot,
                 device=device,
                 net_config=NET_CONFIG))
