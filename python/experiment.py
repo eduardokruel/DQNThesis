@@ -28,30 +28,43 @@ except Exception:
 
 channels_last = False  # Swap image channels dimension from last to first [H, W, C] -> [C, H, W]
 n_agents = env.num_agents
-print(n_agents)
 agent_ids = [agent_id for agent_id in env.agents]
-print(agent_ids)
 field_names = ["state", "action", "reward", "next_state", "done"]
 memory = MultiAgentReplayBuffer(memory_size=1_000_000,
                                 field_names=field_names,
                                 agent_ids=agent_ids,
                                 device=device)
 
-# agent = MADDPG(state_dims=state_dim,
-#                 action_dims=action_dim,
-#                 one_hot=one_hot,
-#                 n_agents=n_agents,
-#                 agent_ids=agent_ids,
-#                 max_action=max_action,
-#                 min_action=min_action,
-#                 discrete_actions=discrete_actions,
-#                 device=device)
+NET_CONFIG = {
+    'arch': 'cnn',      # Network architecture
+    'hidden_size': [128],    # Network hidden size
+    'channel_size': [32, 32], # CNN channel size
+    'kernel_size': [8, 4],   # CNN kernel size
+    'stride_size': [4, 2],   # CNN stride size
+    'normalize': True   # Normalize image from range [0,255] to [0,1]
+    }
 
-# episodes = 1000
-# max_steps = 500 # For atari environments it is recommended to use a value of 500
-# epsilon = 1.0
-# eps_end = 0.1
-# eps_decay = 0.995
+print(state_dim)
+print(action_dim)
+print(one_hot)
+print(info["agent_mask"] if "agent_mask" in info.keys() else None)
+
+agents = []
+for agent_id in agent_ids:
+    agents.append(DQN(state_dims=state_dim,
+                action_dims=action_dim,
+                one_hot=one_hot,
+                device=device,
+                net_config=NET_CONFIG))
+    
+print(agents)
+
+
+episodes = 1000
+max_steps = 500 # For atari environments it is recommended to use a value of 500
+epsilon = 1.0
+eps_end = 0.1
+eps_decay = 0.995
 
 # for ep in range(episodes):
 #     state, info  = env.reset() # Reset environment at start of episode
@@ -68,13 +81,16 @@ memory = MultiAgentReplayBuffer(memory_size=1_000_000,
 #         )
 
 #         # Get next action from agent
-#         cont_actions, discrete_action = agent.getAction(
+#         action = agent.getAction(
 #             state, epsilon, agent_mask, env_defined_actions
 #         )
-#         if agent.discrete_actions:
-#             action = discrete_action
-#         else:
-#             action = cont_actions
+#         # cont_actions, discrete_action = agent.getAction(
+#         #     state, epsilon, agent_mask, env_defined_actions
+#         # )
+#         # if agent.discrete_actions:
+#         #     action = discrete_action
+#         # else:
+#         #     action = cont_actions
 
 #         next_state, reward, termination, truncation, info = env.step(
 #             action
