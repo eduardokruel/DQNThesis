@@ -44,6 +44,11 @@ NET_CONFIG = {
     'normalize': True   # Normalize image from range [0,255] to [0,1]
     }
 
+NET_CONFIG = {
+    'arch': 'mlp',      # Network architecture
+    'hidden_size': [32, 32]  # Network hidden size
+    }
+
 print(state_dim)
 print(action_dim)
 print(one_hot)
