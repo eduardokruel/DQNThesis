@@ -73,22 +73,23 @@ eps_decay = 0.995
 for ep in range(episodes):
     state, info  = env.reset() # Reset environment at start of episode
     agent_reward = {agent_id: 0 for agent_id in env.agents}
-    if channels_last:
-        state = {agent_id: np.moveaxis(np.expand_dims(s, 0), [3], [1]) for agent_id, s in state.items()}
-    print(info["agent_mask"] if "agent_mask" in info.keys() else None)
+    # if channels_last:
+    #     state = {agent_id: np.moveaxis(np.expand_dims(s, 0), [3], [1]) for agent_id, s in state.items()}
+    # print(info["agent_mask"] if "agent_mask" in info.keys() else None)
 
     for _ in range(max_steps):
-        agent_mask = info["agent_mask"] if "agent_mask" in info.keys() else None
-        env_defined_actions = (
-            info["env_defined_actions"]
-            if "env_defined_actions" in info.keys()
-            else None
-        )
+        # agent_mask = info["agent_mask"] if "agent_mask" in info.keys() else None
+        # env_defined_actions = (
+        #     info["env_defined_actions"]
+        #     if "env_defined_actions" in info.keys()
+        #     else None
+        # )
 
         # Get next action from agent
-        action = agent.getAction(
-            state, epsilon, agent_mask, env_defined_actions
-        )
+        actions = [agent.getAction(state, epsilon) for agent in agents]
+        # action = agent.getAction(
+        #     state, epsilon
+        # )
         # cont_actions, discrete_action = agent.getAction(
         #     state, epsilon, agent_mask, env_defined_actions
         # )
@@ -98,22 +99,26 @@ for ep in range(episodes):
         #     action = cont_actions
 
         next_state, reward, termination, truncation, info = env.step(
-            action
+            actions
         )  # Act in environment
 
         # Save experiences to replay buffer
-        if channels_last:
-            state = {agent_id: np.squeeze(s) for agent_id, s in state.items()}
-            next_state = {agent_id: np.moveaxis(ns, [2], [0]) for agent_id, ns in next_state.items()}
-        memory.save2memory(state, cont_actions, reward, next_state, done)
+        # if channels_last:
+        #     state = {agent_id: np.squeeze(s) for agent_id, s in state.items()}
+        #     next_state = {agent_id: np.moveaxis(ns, [2], [0]) for agent_id, ns in next_state.items()}
+        memory.save2memory(state, actions, reward, next_state, done)
+        # memory.save2memory(state, cont_actions, reward, next_state, done)
 
         for agent_id, r in reward.items():
             agent_reward[agent_id] += r
+            print(agent_reward[agent_id],r)
 
         # Learn according to learning frequency
-        if (memory.counter % agent.learn_step == 0) and (len(
-                memory) >= agent.batch_size):
-            experiences = memory.sample(agent.batch_size) # Sample replay buffer
+        if (memory.counter % agents[0].learn_step == 0) and (len(
+                memory) >= agents[0].batch_size):
+            experiences = memory.sample(agents[0].batch_size) # Sample replay buffer
+            print("experiences")
+            print(experiences)
             agent.learn(experiences) # Learn according to agent's RL algorithm
 
         # Update the state
