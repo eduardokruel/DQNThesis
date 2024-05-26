@@ -86,6 +86,7 @@ for ep in range(episodes):
         # )
 
         # Get next action from agent
+        print(state)
         actions = [agent.getAction(state, epsilon) for agent in agents]
         # action = agent.getAction(
         #     state, epsilon
