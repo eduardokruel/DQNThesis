@@ -1,6 +1,7 @@
 # docs and experiment results can be found at https://docs.cleanrl.dev/rl-algorithms/dqn/#dqn_ataripy
 import os
 import random
+import importlib
 import time
 from dataclasses import dataclass
 
@@ -10,6 +11,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import supersuit as ss
 import torch.optim as optim
 import tyro
 from stable_baselines3.common.atari_wrappers import (
@@ -39,7 +41,7 @@ class Args:
     """the wandb's project name"""
     wandb_entity: str = None
     """the entity (team) of wandb's project"""
-    capture_video: bool = False
+    capture_video: bool = True
     """whether to capture videos of the agent performances (check out `videos` folder)"""
     save_model: bool = False
     """whether to save model into the `runs/{run_name}` folder"""
@@ -49,7 +51,7 @@ class Args:
     """the user or org name of the model repository from the Hugging Face Hub"""
 
     # Algorithm specific arguments
-    env_id: str = "BreakoutNoFrameskip-v4"
+    env_id: str = "wizard_of_wor_v3"
     """the id of the environment"""
     total_timesteps: int = 10000000
     """total timesteps of the experiments"""
@@ -79,29 +81,27 @@ class Args:
     """the frequency of training"""
 
 
-def make_env(env_id, seed, idx, capture_video, run_name):
-    def thunk():
-        if capture_video and idx == 0:
-            env = importlib.import_module(f"pettingzoo.atari.{env_id}").parallel_env(render_mode="rgb_array")
-            env = gym.wrappers.RecordVideo(env, f"videos/{run_name}")
-        else:
-            env = importlib.import_module(f"pettingzoo.atari.{env_id}").parallel_env()
-        env = gym.wrappers.RecordEpisodeStatistics(env)
+# def make_env(env_id, seed, idx, capture_video, run_name):
+#     if capture_video and idx == 0:
+#         env = importlib.import_module(f"pettingzoo.atari.{env_id}").parallel_env(render_mode="rgb_array")
+#         env = gym.wrappers.RecordVideo(env, f"videos/{run_name}")
+#     else:
+#         env = importlib.import_module(f"pettingzoo.atari.{env_id}").parallel_env()
+#     env = gym.wrappers.RecordEpisodeStatistics(env)
 
-        env = NoopResetEnv(env, noop_max=30)
-        env = MaxAndSkipEnv(env, skip=4)
-        env = EpisodicLifeEnv(env)
-        if "FIRE" in env.unwrapped.get_action_meanings():
-            env = FireResetEnv(env)
-        env = ClipRewardEnv(env)
-        env = gym.wrappers.ResizeObservation(env, (84, 84))
-        env = gym.wrappers.GrayScaleObservation(env)
-        env = gym.wrappers.FrameStack(env, 4)
+#     env = NoopResetEnv(env, noop_max=30)
+#     env = MaxAndSkipEnv(env, skip=4)
+#     env = EpisodicLifeEnv(env)
+#     if "FIRE" in env.unwrapped.get_action_meanings():
+#         env = FireResetEnv(env)
+#     env = ClipRewardEnv(env)
+#     env = gym.wrappers.ResizeObservation(env, (84, 84))
+#     env = gym.wrappers.GrayScaleObservation(env)
+#     env = gym.wrappers.FrameStack(env, 4)
 
-        env.action_space.seed(seed)
-        return env
+#     env.action_space.seed(seed)
+#     return env
 
-    return thunk
 
 
 # ALGO LOGIC: initialize agent here:
@@ -170,22 +170,40 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     device = torch.device("cuda" if torch.cuda.is_available() and args.cuda else "cpu")
 
     # env setup
-    envs = gym.vector.SyncVectorEnv(
-        [make_env(args.env_id, args.seed + i, i, args.capture_video, run_name) for i in range(args.num_envs)]
-    )
+    # envs = make_env(args.env_id, args.seed, 0, args.capture_video, run_name)
+    # print(envs)
+    # print(type(envs))
+    # envs.single_observation_space = envs.observation_space
+    # envs.single_action_space = envs.action_space
+    # envs.is_vector_env = True
+    # assert isinstance(envs.action_space, gym.spaces.Discrete), "only discrete action space is supported"
+
+    env = importlib.import_module(f"pettingzoo.atari.{args.env_id}").parallel_env()
+    env = ss.max_observation_v0(env, 2)
+    env = ss.frame_skip_v0(env, 4)
+    env = ss.clip_reward_v0(env, lower_bound=-1, upper_bound=1)
+    env = ss.color_reduction_v0(env, mode="B")
+    env = ss.resize_v1(env, x_size=84, y_size=84)
+    env = ss.frame_stack_v1(env, 4)
+    env = ss.agent_indicator_v0(env, type_only=False)
+    env = ss.pettingzoo_env_to_vec_env_v1(env)
+    envs = ss.concat_vec_envs_v1(env, args.num_envs, num_cpus=0, base_class="gymnasium")
+    # envs = env
+    envs.single_observation_space = envs.observation_space
+    envs.single_action_space = envs.action_space
+    envs.is_vector_env = True
+    envs = gym.wrappers.RecordEpisodeStatistics(envs)
+    if args.capture_video:
+        envs = gym.wrappers.RecordVideo(envs, f"videos/{run_name}")
     assert isinstance(envs.single_action_space, gym.spaces.Discrete), "only discrete action space is supported"
 
-    q_network1 = QNetwork(envs).to(device)
-    optimizer1 = optim.Adam(q_network1.parameters(), lr=args.learning_rate)
-    target_network1 = QNetwork(envs).to(device)
-    target_network1.load_state_dict(q_network1.state_dict())
-    
-    q_network2 = QNetwork(envs).to(device)
-    optimizer2 = optim.Adam(q_network2.parameters(), lr=args.learning_rate)
-    target_network2 = QNetwork(envs).to(device)
-    target_network2.load_state_dict(q_network2.state_dict())
 
-    rb1 = ReplayBuffer(
+    q_network = QNetwork(envs).to(device)
+    optimizer = optim.Adam(q_network.parameters(), lr=args.learning_rate)
+    target_network = QNetwork(envs).to(device)
+    target_network.load_state_dict(q_network.state_dict())
+
+    rb = ReplayBuffer(
         args.buffer_size,
         envs.single_observation_space,
         envs.single_action_space,
@@ -194,14 +212,6 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         handle_timeout_termination=False,
     )
     
-    rb2 = ReplayBuffer(
-        args.buffer_size,
-        envs.single_observation_space,
-        envs.single_action_space,
-        device,
-        optimize_memory_usage=True,
-        handle_timeout_termination=False,
-    )
     start_time = time.time()
 
     # TRY NOT TO MODIFY: start the game
@@ -214,7 +224,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         else:
             q_values = q_network(torch.Tensor(obs).to(device))
             actions = torch.argmax(q_values, dim=1).cpu().numpy()
-
+        print(actions)
         # TRY NOT TO MODIFY: execute the game and log data.
         next_obs, rewards, terminations, truncations, infos = envs.step(actions)
 
