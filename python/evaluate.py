@@ -209,9 +209,9 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
 
 
     q_network = torch.load(f"results/runs/{args.save_path}/experiment.cleanrl_model")
-    optimizer = optim.Adam(q_network.parameters(), lr=args.learning_rate)
-    target_network = QNetwork(envs).to(device)
-    target_network.load_state_dict(q_network.state_dict())
+    # optimizer = optim.Adam(q_network.parameters(), lr=args.learning_rate)
+    # target_network = QNetwork(envs).to(device)
+    # target_network.load_state_dict(q_network.state_dict())
 
     rb = ReplayBuffer(
         args.buffer_size,
