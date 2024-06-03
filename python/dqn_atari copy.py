@@ -35,7 +35,7 @@ class Args:
     """if toggled, `torch.backends.cudnn.deterministic=False`"""
     cuda: bool = True
     """if toggled, cuda will be enabled by default"""
-    track: bool = False
+    track: bool = True
     """if toggled, this experiment will be tracked with Weights and Biases"""
     wandb_project_name: str = "cleanRL"
     """the wandb's project name"""
@@ -75,7 +75,7 @@ class Args:
     """the ending epsilon for exploration"""
     exploration_fraction: float = 0.10
     """the fraction of `total-timesteps` it takes from start-e to go end-e"""
-    learning_starts: int = 80000
+    learning_starts: int = 2000
     """timestep to start learning"""
     train_frequency: int = 4
     """the frequency of training"""
@@ -178,24 +178,28 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     # envs.is_vector_env = True
     # assert isinstance(envs.action_space, gym.spaces.Discrete), "only discrete action space is supported"
 
-    env = importlib.import_module(f"pettingzoo.atari.{args.env_id}").parallel_env()
+    env = importlib.import_module(f"pettingzoo.atari.{args.env_id}").parallel_env(render_mode="rgb_array")
     env = ss.max_observation_v0(env, 2)
-    env = ss.frame_skip_v0(env, 4)
-    env = ss.clip_reward_v0(env, lower_bound=-1, upper_bound=1)
+    # env = ss.frame_skip_v0(env, 4)
+    # env = ss.clip_reward_v0(env, lower_bound=-1, upper_bound=1)
     env = ss.color_reduction_v0(env, mode="B")
     env = ss.resize_v1(env, x_size=84, y_size=84)
+    env = ss.black_death_v3(env)
     env = ss.frame_stack_v1(env, 4)
-    env = ss.agent_indicator_v0(env, type_only=False)
+    # env = ss.agent_indicator_v0(env, type_only=False)
     env = ss.pettingzoo_env_to_vec_env_v1(env)
-    envs = ss.concat_vec_envs_v1(env, args.num_envs, num_cpus=0, base_class="gymnasium")
-    # envs = env
+    # envs = ss.concat_vec_envs_v1(
+    #     env, args.num_envs, num_cpus=0, base_class="gymnasium"
+    # )
+    envs = env
     envs.single_observation_space = envs.observation_space
     envs.single_action_space = envs.action_space
     envs.is_vector_env = True
-    envs = gym.wrappers.RecordEpisodeStatistics(envs)
     if args.capture_video:
         envs = gym.wrappers.RecordVideo(envs, f"videos/{run_name}")
-    assert isinstance(envs.single_action_space, gym.spaces.Discrete), "only discrete action space is supported"
+    assert isinstance(
+        envs.single_action_space, gym.spaces.Discrete
+    ), "only discrete action space is supported"
 
 
     q_network = QNetwork(envs).to(device)
@@ -213,22 +217,35 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     )
     
     start_time = time.time()
-
+    episode_length = 0
+    episode_reward = np.zeros(2)
     # TRY NOT TO MODIFY: start the game
     obs, _ = envs.reset(seed=args.seed)
+    # print(np.moveaxis(obs[0:1],3,1).shape)
     for global_step in range(args.total_timesteps):
+        # print(global_step)
         # ALGO LOGIC: put action logic here
         epsilon = linear_schedule(args.start_e, args.end_e, args.exploration_fraction * args.total_timesteps, global_step)
         if random.random() < epsilon:
-            actions = np.array([envs.single_action_space.sample() for _ in range(envs.num_envs)])
+            # actions = np.array([envs.single_action_space.sample() for _ in range(envs.num_envs)])
+            actions = np.array([envs.single_action_space.sample(),envs.single_action_space.sample()])
         else:
-            q_values = q_network(torch.Tensor(obs).to(device))
-            actions = torch.argmax(q_values, dim=1).cpu().numpy()
-        print(actions)
+            q_values = q_network(torch.Tensor(np.moveaxis(obs[0:1],3,1)).to(device))
+            actions = np.array([torch.argmax(q_values).cpu().numpy(),envs.single_action_space.sample()])
         # TRY NOT TO MODIFY: execute the game and log data.
         next_obs, rewards, terminations, truncations, infos = envs.step(actions)
 
+        episode_reward = np.add(episode_reward,rewards)
         # TRY NOT TO MODIFY: record rewards for plotting purposes
+        if infos != [{},{}]:
+            print(episode_reward)
+            print(global_step - episode_length)
+            print(f"global_step={global_step}, episodic_return={episode_reward}")
+            writer.add_scalar("charts/episodic_return0", episode_reward[0], global_step)
+            writer.add_scalar("charts/episodic_return1", episode_reward[1], global_step)
+            writer.add_scalar("charts/episodic_length", global_step - episode_length, global_step)
+            episode_length = global_step
+            episode_reward = np.zeros(2)
         if "final_info" in infos:
             for info in infos["final_info"]:
                 if info and "episode" in info:
@@ -240,8 +257,8 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         real_next_obs = next_obs.copy()
         for idx, trunc in enumerate(truncations):
             if trunc:
-                real_next_obs[idx] = infos["final_observation"][idx]
-        rb.add(obs, real_next_obs, actions, rewards, terminations, infos)
+                real_next_obs[idx] = infos[0]["terminal_observation"][idx]
+        rb.add(obs[0:1], real_next_obs[0:1], actions[0], rewards[0], terminations[0], infos)
 
         # TRY NOT TO MODIFY: CRUCIAL step easy to overlook
         obs = next_obs
@@ -251,9 +268,9 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             if global_step % args.train_frequency == 0:
                 data = rb.sample(args.batch_size)
                 with torch.no_grad():
-                    target_max, _ = target_network(data.next_observations).max(dim=1)
+                    target_max, _ = target_network(torch.Tensor(np.moveaxis(data.next_observations.numpy(),3,1))).max(dim=1)
                     td_target = data.rewards.flatten() + args.gamma * target_max * (1 - data.dones.flatten())
-                old_val = q_network(data.observations).gather(1, data.actions).squeeze()
+                old_val = q_network(torch.Tensor(np.moveaxis(data.observations.numpy(),3,1))).gather(1, data.actions).squeeze()
                 loss = F.mse_loss(td_target, old_val)
 
                 if global_step % 100 == 0:
