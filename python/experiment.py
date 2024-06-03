@@ -75,10 +75,12 @@ class Args:
     """the ending epsilon for exploration"""
     exploration_fraction: float = 0.10
     """the fraction of `total-timesteps` it takes from start-e to go end-e"""
-    learning_starts: int = 2000
+    learning_starts: int = 80000
     """timestep to start learning"""
     train_frequency: int = 4
     """the frequency of training"""
+    kill_reward: int = 10000
+    """the reward for killing another agent"""
 
 
 # def make_env(env_id, seed, idx, capture_video, run_name):
@@ -219,6 +221,8 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     start_time = time.time()
     episode_length = 0
     episode_reward = np.zeros(2)
+    adjusted_episode_reward = np.zeros(2)
+    episode_kills = np.zeros(2)
     # TRY NOT TO MODIFY: start the game
     obs, _ = envs.reset(seed=args.seed)
     # print(np.moveaxis(obs[0:1],3,1).shape)
@@ -234,8 +238,20 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             actions = np.array([torch.argmax(q_values).cpu().numpy(),envs.single_action_space.sample()])
         # TRY NOT TO MODIFY: execute the game and log data.
         next_obs, rewards, terminations, truncations, infos = envs.step(actions)
-
-        episode_reward = np.add(episode_reward,rewards)
+        
+        # episode_reward = np.add(episode_reward,rewards)
+        for i in range(2):
+            if rewards[i] % 10 == 1:
+                episode_kills[i] += 1
+                rewards[i] -= 1
+                episode_reward[i] += rewards[i]
+                rewards[i] += args.kill_reward
+                adjusted_episode_reward[i] += rewards[i]
+            else:
+                episode_reward[i] += rewards[i]
+                adjusted_episode_reward[i] += rewards[i]
+        # adjusted_episode_reward = np.add(episode_reward,rewards)
+        
         # TRY NOT TO MODIFY: record rewards for plotting purposes
         if infos != [{},{}]:
             print(episode_reward)
@@ -243,9 +259,14 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             print(f"global_step={global_step}, episodic_return={episode_reward}")
             writer.add_scalar("charts/episodic_return0", episode_reward[0], global_step)
             writer.add_scalar("charts/episodic_return1", episode_reward[1], global_step)
+            writer.add_scalar("charts/adjusted_episodic_return0", adjusted_episode_reward[0], global_step)
+            writer.add_scalar("charts/adjusted_episodic_return1", adjusted_episode_reward[1], global_step)
+            writer.add_scalar("charts/episodic_kills0", episode_kills[0], global_step)
+            writer.add_scalar("charts/episodic_kills1", episode_kills[1], global_step)
             writer.add_scalar("charts/episodic_length", global_step - episode_length, global_step)
             episode_length = global_step
             episode_reward = np.zeros(2)
+            episode_kills = np.zeros(2)
         if "final_info" in infos:
             for info in infos["final_info"]:
                 if info and "episode" in info:
