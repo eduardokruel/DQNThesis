@@ -9,5 +9,6 @@ conda init
 conda activate dqn39
 python experiment.py --seed 1 --kill_reward 0 --save_model
 mkdir -p $HOME/slurm-bpai-tutorial/python/results
+ls
 cp -a /runs/. $HOME/slurm-bpai-tutorial/python/results
 rm -rf $TMPDIR/etl360/python
