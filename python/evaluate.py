@@ -208,7 +208,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     ), "only discrete action space is supported"
 
 
-    q_network = torch.load(f"$TMPDIR/etl360/python/results/runs/{args.save_path}/experiment.cleanrl_model")
+    q_network = torch.load(f"results/runs/{args.save_path}/experiment.cleanrl_model")
     optimizer = optim.Adam(q_network.parameters(), lr=args.learning_rate)
     target_network = QNetwork(envs).to(device)
     target_network.load_state_dict(q_network.state_dict())
