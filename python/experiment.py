@@ -81,6 +81,8 @@ class Args:
     """the frequency of training"""
     kill_reward: int = 0
     """the reward for killing another agent"""
+    negative_reward: bool = False
+    """whether to turn kill reward negative"""
 
 
 # def make_env(env_id, seed, idx, capture_video, run_name):
@@ -248,7 +250,10 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
                 episode_kills[i] += 1
                 rewards[i] -= 1
                 episode_reward[i] += rewards[i]
-                rewards[i] += args.kill_reward
+                if args.negative_reward:
+                    rewards[i] -= args.kill_reward
+                else:
+                    rewards[i] += args.kill_reward
                 adjusted_episode_reward[i] += rewards[i]
             else:
                 episode_reward[i] += rewards[i]
