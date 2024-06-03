@@ -1,4 +1,4 @@
-# Install script for directory: /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502
+# Install script for directory: /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/emucore/m6502/src/bspf/cmake_install.cmake")
+  include("/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/emucore/m6502/src/bspf/cmake_install.cmake")
 endif()
 

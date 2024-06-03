@@ -1,4 +1,4 @@
-# Install script for directory: /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf
+# Install script for directory: /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

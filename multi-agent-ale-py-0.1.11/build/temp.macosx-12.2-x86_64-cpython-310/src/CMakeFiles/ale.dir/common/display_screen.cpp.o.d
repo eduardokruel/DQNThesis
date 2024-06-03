@@ -1,6 +1,6 @@
 src/CMakeFiles/ale.dir/common/display_screen.cpp.o: \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/display_screen.cpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/display_screen.h \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/display_screen.cpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/display_screen.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/algorithm \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config_site \
@@ -349,7 +349,7 @@ src/CMakeFiles/ale.dir/common/display_screen.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/transform.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/unique_copy.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/unique.h \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/Constants.h \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/Constants.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/string \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/cstdio \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/string_view \
@@ -364,8 +364,8 @@ src/CMakeFiles/ale.dir/common/display_screen.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bit_reference \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/ColourPalette.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/../emucore/m6502/src/bspf/src/bspf.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/ColourPalette.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/../emucore/m6502/src/bspf/src/bspf.hxx \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/ios \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__locale \
@@ -421,6 +421,6 @@ src/CMakeFiles/ale.dir/common/display_screen.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iomanip \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/../emucore/MediaSrc.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src/bspf.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/SoundSDL.hxx
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/../emucore/MediaSrc.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src/bspf.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/SoundSDL.hxx

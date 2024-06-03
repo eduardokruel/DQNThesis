@@ -64,6 +64,14 @@ void WizardOfWorSettings::step(const System& system) {
   bool isWaiting = (readRam(&system, 0xD7) & 0x1) == 0;
   bool isWaitingP2 = (readRam(&system, 0xD6) & 0x1) == 0;
 
+  if (m_reward == 1000 && m_lives_p2 > newLivesP2) {
+    m_reward += 1;
+  }
+
+  // Check if player 2 killed player 1
+  if (m_reward_p2 == 1000 && m_lives > newLives) {
+    m_reward_p2 += 1;
+  }
   m_terminal = newLives == -1 && byte1 == 0xF8 && (newLivesP2 == -1 || !is_two_player);
 
   // Wizard of Wor decreases the life total when we move into the play field; we only

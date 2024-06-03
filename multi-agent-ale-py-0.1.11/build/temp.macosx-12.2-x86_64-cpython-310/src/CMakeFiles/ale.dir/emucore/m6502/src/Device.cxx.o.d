@@ -1,7 +1,7 @@
 src/CMakeFiles/ale.dir/emucore/m6502/src/Device.cxx.o: \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/Device.cxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/Device.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src/bspf.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/Device.cxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/Device.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src/bspf.hxx \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config_site \

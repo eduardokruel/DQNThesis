@@ -1,7 +1,7 @@
 src/CMakeFiles/ale.dir/emucore/Paddles.cxx.o: \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Paddles.cxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Event.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src/bspf.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Paddles.cxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Event.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src/bspf.hxx \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config_site \
@@ -417,5 +417,5 @@ src/CMakeFiles/ale.dir/emucore/Paddles.cxx.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iomanip \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Paddles.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Control.hxx
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Paddles.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Control.hxx

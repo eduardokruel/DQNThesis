@@ -1,8 +1,8 @@
 src/CMakeFiles/ale-c-lib.dir/__/multi_agent_ale_py/ale_c_wrapper.cpp.o: \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/multi_agent_ale_py/ale_c_wrapper.cpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/multi_agent_ale_py/ale_c_wrapper.h \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/ale_interface.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/FSNode.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/multi_agent_ale_py/ale_c_wrapper.cpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/multi_agent_ale_py/ale_c_wrapper.h \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/ale_interface.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/FSNode.hxx \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/algorithm \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__config_site \
@@ -351,8 +351,8 @@ src/CMakeFiles/ale-c-lib.dir/__/multi_agent_ale_py/ale_c_wrapper.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/transform.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/unique_copy.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/unique.h \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/../common/Array.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/../emucore/m6502/src/bspf/src/bspf.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/../common/Array.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/../emucore/m6502/src/bspf/src/bspf.hxx \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/ios \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__locale \
@@ -420,67 +420,67 @@ src/CMakeFiles/ale-c-lib.dir/__/multi_agent_ale_py/ale_c_wrapper.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/iomanip \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/OSystem.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Sound.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src/bspf.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/../common/SoundNull.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/../emucore/Sound.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Settings.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/OSystem.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Sound.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src/bspf.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/../common/SoundNull.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/../emucore/Sound.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Settings.hxx \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__functional/is_transparent.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/optional \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__tree \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Console.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Control.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Props.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/TIA.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/Device.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/MediaSrc.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Cart.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Console.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Control.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Props.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/TIA.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/Device.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/MediaSrc.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Cart.hxx \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/stack \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/deque \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Random.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/../common/Log.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/M6532.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/AtariVox.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/Event.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/../common/display_screen.h \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/Constants.h \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Random.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/../common/Log.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/M6532.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/AtariVox.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/Event.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/../common/display_screen.h \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/Constants.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/vector \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/ColourPalette.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/../emucore/MediaSrc.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/../common/ColourPalette.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/../common/ScreenExporter.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/display_screen.h \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/../environment/ale_screen.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/os_dependent/SettingsUNIX.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/os_dependent/../emucore/m6502/src/bspf/src/bspf.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/os_dependent/OSystemUNIX.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/games/Roms.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/games/RomSettings.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/games/../common/Constants.h \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/games/../emucore/Serializer.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/ColourPalette.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/../emucore/MediaSrc.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/../common/ColourPalette.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/../common/ScreenExporter.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/display_screen.h \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/../environment/ale_screen.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/os_dependent/SettingsUNIX.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/os_dependent/../emucore/m6502/src/bspf/src/bspf.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/os_dependent/OSystemUNIX.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/games/Roms.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/games/RomSettings.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/games/../common/Constants.h \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/games/../emucore/Serializer.hxx \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/sstream \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/games/../emucore/Deserializer.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/games/../emucore/Settings.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/games/../environment/stella_environment_wrapper.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/../common/Constants.h \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/../emucore/Random.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/stella_environment.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/ale_ram.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/ale_screen.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/ale_state.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/../emucore/OSystem.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/../emucore/Event.hxx \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/../common/Log.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/phosphor_blend.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/stella_environment_wrapper.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/../games/RomSettings.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment/../common/ScreenExporter.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/ScreenExporter.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common/Log.hpp \
-  /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/version.hpp
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/games/../emucore/Deserializer.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/games/../emucore/Settings.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/games/../environment/stella_environment_wrapper.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/../common/Constants.h \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/../emucore/Random.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/stella_environment.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/ale_ram.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/ale_screen.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/ale_state.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/../emucore/OSystem.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/../emucore/Event.hxx \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/../common/Log.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/phosphor_blend.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/stella_environment_wrapper.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/../games/RomSettings.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment/../common/ScreenExporter.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/ScreenExporter.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common/Log.hpp \
+  /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/version.hpp

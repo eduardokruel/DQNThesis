@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/multi_agent_ale_py/ale_c_wrapper.cpp" "src/CMakeFiles/ale-c-lib.dir/__/multi_agent_ale_py/ale_c_wrapper.cpp.o" "gcc" "src/CMakeFiles/ale-c-lib.dir/__/multi_agent_ale_py/ale_c_wrapper.cpp.o.d"
-  "/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/ale_interface.cpp" "src/CMakeFiles/ale-c-lib.dir/ale_interface.cpp.o" "gcc" "src/CMakeFiles/ale-c-lib.dir/ale_interface.cpp.o.d"
+  "/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/multi_agent_ale_py/ale_c_wrapper.cpp" "src/CMakeFiles/ale-c-lib.dir/__/multi_agent_ale_py/ale_c_wrapper.cpp.o" "gcc" "src/CMakeFiles/ale-c-lib.dir/__/multi_agent_ale_py/ale_c_wrapper.cpp.o.d"
+  "/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/ale_interface.cpp" "src/CMakeFiles/ale-c-lib.dir/ale_interface.cpp.o" "gcc" "src/CMakeFiles/ale-c-lib.dir/ale_interface.cpp.o.d"
   )
 
 # Targets to which this target links.

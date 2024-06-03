@@ -1,4 +1,4 @@
-# Install script for directory: /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src
+# Install script for directory: /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,31 +39,31 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/common/cmake_install.cmake")
+  include("/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/common/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/emucore/cmake_install.cmake")
+  include("/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/emucore/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/os_dependent/cmake_install.cmake")
+  include("/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/os_dependent/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/environment/cmake_install.cmake")
+  include("/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/environment/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/games/cmake_install.cmake")
+  include("/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src/games/cmake_install.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/lib.macosx-12.2-x86_64-cpython-310/multi_agent_ale_py/libale_c.dylib")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/lib.macosx-12.2-x86_64-cpython-310/multi_agent_ale_py/libale_c.dylib")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libale_c.dylib" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libale_c.dylib")
     if(CMAKE_INSTALL_DO_STRIP)

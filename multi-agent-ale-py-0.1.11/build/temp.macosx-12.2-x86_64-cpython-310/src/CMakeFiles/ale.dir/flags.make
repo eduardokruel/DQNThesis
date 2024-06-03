@@ -4,7 +4,7 @@
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src -I/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src -I/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11 -I/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/common -I/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src -I/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore/m6502/src -I/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/emucore -I/Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/environment
+CXX_INCLUDES = -I/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/build/temp.macosx-12.2-x86_64-cpython-310/src -I/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src -I/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11 -I/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/common -I/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src/bspf/src -I/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore/m6502/src -I/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/emucore -I/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/environment
 
 CXX_FLAGS = -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12.2 -O3 -fPIC -Wall -Wunused -std=gnu++11
 

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/eduardokruel/Documents/GitHub/multi-agent-ale-py-0.1.11/src/os_dependent
+# Install script for directory: /Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/multi-agent-ale-py-0.1.11/src/os_dependent
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
