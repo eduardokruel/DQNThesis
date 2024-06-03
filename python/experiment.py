@@ -266,6 +266,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             writer.add_scalar("charts/episodic_length", global_step - episode_length, global_step)
             episode_length = global_step
             episode_reward = np.zeros(2)
+            adjusted_episode_reward = np.zeros(2)
             episode_kills = np.zeros(2)
         if "final_info" in infos:
             for info in infos["final_info"]:
