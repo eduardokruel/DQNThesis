@@ -53,7 +53,7 @@ class Args:
     # Algorithm specific arguments
     env_id: str = "wizard_of_wor_v3"
     """the id of the environment"""
-    total_timesteps: int = 10000000
+    total_timesteps: int = 10000
     """total timesteps of the experiments"""
     learning_rate: float = 1e-4
     """the learning rate of the optimizer"""
@@ -75,11 +75,11 @@ class Args:
     """the ending epsilon for exploration"""
     exploration_fraction: float = 0.10
     """the fraction of `total-timesteps` it takes from start-e to go end-e"""
-    learning_starts: int = 80000
+    learning_starts: int = 8000
     """timestep to start learning"""
     train_frequency: int = 4
     """the frequency of training"""
-    kill_reward: int = 10000
+    kill_reward: int = 0
     """the reward for killing another agent"""
 
 
@@ -168,6 +168,8 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = args.torch_deterministic
+    action_space0 = gym.spaces.Discrete(9,seed=args.seed)
+    action_space1 = gym.spaces.Discrete(9,seed=args.seed)
 
     device = torch.device("cuda" if torch.cuda.is_available() and args.cuda else "cpu")
 
@@ -223,6 +225,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     episode_reward = np.zeros(2)
     adjusted_episode_reward = np.zeros(2)
     episode_kills = np.zeros(2)
+
     # TRY NOT TO MODIFY: start the game
     obs, _ = envs.reset(seed=args.seed)
     # print(np.moveaxis(obs[0:1],3,1).shape)
@@ -232,10 +235,10 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         epsilon = linear_schedule(args.start_e, args.end_e, args.exploration_fraction * args.total_timesteps, global_step)
         if random.random() < epsilon:
             # actions = np.array([envs.single_action_space.sample() for _ in range(envs.num_envs)])
-            actions = np.array([envs.single_action_space.sample(),envs.single_action_space.sample()])
+            actions = np.array([action_space0.sample(),action_space1.sample()])
         else:
             q_values = q_network(torch.Tensor(np.moveaxis(obs[0:1],3,1)).to(device))
-            actions = np.array([torch.argmax(q_values).cpu().numpy(),envs.single_action_space.sample()])
+            actions = np.array([torch.argmax(q_values).cpu().numpy(),action_space1.sample()])
         # TRY NOT TO MODIFY: execute the game and log data.
         next_obs, rewards, terminations, truncations, infos = envs.step(actions)
         
@@ -317,20 +320,20 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         model_path = f"runs/{run_name}/{args.exp_name}.cleanrl_model"
         torch.save(q_network.state_dict(), model_path)
         print(f"model saved to {model_path}")
-        from cleanrl_utils.evals.dqn_eval import evaluate
+        # from cleanrl_utils.evals.dqn_eval import evaluate
 
-        episodic_returns = evaluate(
-            model_path,
-            make_env,
-            args.env_id,
-            eval_episodes=10,
-            run_name=f"{run_name}-eval",
-            Model=QNetwork,
-            device=device,
-            epsilon=0.05,
-        )
-        for idx, episodic_return in enumerate(episodic_returns):
-            writer.add_scalar("eval/episodic_return", episodic_return, idx)
+        # episodic_returns = evaluate(
+        #     model_path,
+        #     make_env,
+        #     args.env_id,
+        #     eval_episodes=10,
+        #     run_name=f"{run_name}-eval",
+        #     Model=QNetwork,
+        #     device=device,
+        #     epsilon=0.05,
+        # )
+        # for idx, episodic_return in enumerate(episodic_returns):
+            # writer.add_scalar("eval/episodic_return", episodic_return, idx)
 
         if args.upload_model:
             from cleanrl_utils.huggingface import push_to_hub
