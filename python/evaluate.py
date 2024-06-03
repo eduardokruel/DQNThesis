@@ -53,7 +53,7 @@ class Args:
     # Algorithm specific arguments
     env_id: str = "wizard_of_wor_v3"
     """the id of the environment"""
-    total_timesteps: int = 10000000
+    total_timesteps: int = 100000
     """total timesteps of the experiments"""
     learning_rate: float = 1e-4
     """the learning rate of the optimizer"""
@@ -69,18 +69,20 @@ class Args:
     """the timesteps it takes to update the target network"""
     batch_size: int = 32
     """the batch size of sample from the reply memory"""
-    start_e: float = 1
+    start_e: float = 0
     """the starting epsilon for exploration"""
-    end_e: float = 0.01
+    end_e: float = 0
     """the ending epsilon for exploration"""
     exploration_fraction: float = 0.10
     """the fraction of `total-timesteps` it takes from start-e to go end-e"""
-    learning_starts: int = 80000
+    learning_starts: int = 100000
     """timestep to start learning"""
     train_frequency: int = 4
     """the frequency of training"""
     kill_reward: int = 0
     """the reward for killing another agent"""
+    save_path: str = ""
+    """the path to the model"""
 
 
 # def make_env(env_id, seed, idx, capture_video, run_name):
@@ -206,7 +208,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     ), "only discrete action space is supported"
 
 
-    q_network = QNetwork(envs).to(device)
+    q_network = torch.load(f"$TMPDIR/etl360/python/results/runs/{save_path}/experiment.cleanrl_model")
     optimizer = optim.Adam(q_network.parameters(), lr=args.learning_rate)
     target_network = QNetwork(envs).to(device)
     target_network.load_state_dict(q_network.state_dict())
