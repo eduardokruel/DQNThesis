@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH --time=10:00:00
+#SBATCH --time=00:15:00
 #SBATCH -N 1
 
 mkdir -p $TMPDIR/etl360
