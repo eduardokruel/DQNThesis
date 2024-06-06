@@ -187,7 +187,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     env = importlib.import_module(f"pettingzoo.atari.{args.env_id}").parallel_env(render_mode="rgb_array")
     env = ss.max_observation_v0(env, 2)
     # env = ss.frame_skip_v0(env, 4)
-    env = ss.clip_reward_v0(env, lower_bound=-1, upper_bound=1)
+    # env = ss.clip_reward_v0(env, lower_bound=-1, upper_bound=1)
     env = ss.color_reduction_v0(env, mode="B")
     env = ss.resize_v1(env, x_size=84, y_size=84)
     env = ss.black_death_v3(env)
@@ -258,6 +258,10 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             else:
                 episode_reward[i] += rewards[i]
                 adjusted_episode_reward[i] += rewards[i]
+            if rewards[i] > 1:
+                rewards[i] = 1
+            if rewards[i] < -1:
+                rewards[i] = -1
         # adjusted_episode_reward = np.add(episode_reward,rewards)
         
         # TRY NOT TO MODIFY: record rewards for plotting purposes
