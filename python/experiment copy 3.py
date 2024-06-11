@@ -243,9 +243,6 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             actions = np.array([torch.argmax(q_values).cpu().numpy(),action_space1.sample()])
         # TRY NOT TO MODIFY: execute the game and log data.
         next_obs, rewards, terminations, truncations, infos = envs.step(actions)
-        if [truncations[0],truncations[1]] != [0,0]:
-            print(f"terminations={terminations}")
-            print(f"truncations={truncations}")
         # episode_reward = np.add(episode_reward,rewards)
         for i in range(2):
             if rewards[i] % 10 == 1:
