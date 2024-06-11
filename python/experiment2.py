@@ -291,7 +291,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         for idx, trunc in enumerate(truncations):
             if trunc:
                 real_next_obs[idx] = infos[0]["terminal_observation"][idx]
-        if not obs[0].any():
+        if obs[0].any():
             rb.add(obs[0:1], real_next_obs[0:1], actions[0], rewards[0], terminations[0], infos)
 
         # TRY NOT TO MODIFY: CRUCIAL step easy to overlook
