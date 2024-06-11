@@ -51,9 +51,9 @@ class Args:
     """the user or org name of the model repository from the Hugging Face Hub"""
 
     # Algorithm specific arguments
-    env_id: str = "wizard_of_wor_v3"
+    env_id: str = "pong_v3"
     """the id of the environment"""
-    total_timesteps: int = 10000000
+    total_timesteps: int = 1000000
     """total timesteps of the experiments"""
     learning_rate: float = 1e-4
     """the learning rate of the optimizer"""
@@ -170,8 +170,8 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = args.torch_deterministic
-    action_space0 = gym.spaces.Discrete(9,seed=args.seed)
-    action_space1 = gym.spaces.Discrete(9,seed=args.seed)
+    action_space0 = gym.spaces.Discrete(5,seed=args.seed)
+    action_space1 = gym.spaces.Discrete(5,seed=args.seed)
 
     device = torch.device("cuda" if torch.cuda.is_available() and args.cuda else "cpu")
 
@@ -232,7 +232,6 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     obs, _ = envs.reset(seed=args.seed)
     # print(np.moveaxis(obs[0:1],3,1).shape)
     for global_step in range(args.total_timesteps):
-        # print(global_step)
         # ALGO LOGIC: put action logic here
         epsilon = linear_schedule(args.start_e, args.end_e, args.exploration_fraction * args.total_timesteps, global_step)
         if random.random() < epsilon:
@@ -243,9 +242,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             actions = np.array([torch.argmax(q_values).cpu().numpy(),action_space1.sample()])
         # TRY NOT TO MODIFY: execute the game and log data.
         next_obs, rewards, terminations, truncations, infos = envs.step(actions)
-        if [truncations[0],truncations[1]] != [0,0]:
-            print(f"terminations={terminations}")
-            print(f"truncations={truncations}")
+        
         # episode_reward = np.add(episode_reward,rewards)
         for i in range(2):
             if rewards[i] % 10 == 1:
