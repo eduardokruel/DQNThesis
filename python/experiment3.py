@@ -245,7 +245,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         
         # episode_reward = np.add(episode_reward,rewards)
         for i in range(2):
-            if rewards[i] % 10 == 1:
+            if False:
                 episode_kills[i] += 1
                 rewards[i] -= 1
                 episode_reward[i] += rewards[i]
@@ -257,10 +257,10 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             else:
                 episode_reward[i] += rewards[i]
                 adjusted_episode_reward[i] += rewards[i]
-            if rewards[i] > 1:
-                rewards[i] = 1
-            if rewards[i] < -1:
-                rewards[i] = -1
+            # if rewards[i] > 1:
+            #     rewards[i] = 1
+            # if rewards[i] < -1:
+            #     rewards[i] = -1
         # adjusted_episode_reward = np.add(episode_reward,rewards)
         
         # TRY NOT TO MODIFY: record rewards for plotting purposes
