@@ -94,7 +94,7 @@ def _label_with_episode_number(frame, episode_num):
     return im
 
 episodes = 10
-max_steps = 500 # For atari environments it is recommended to use a value of 500
+max_steps = 5000 # For atari environments it is recommended to use a value of 500
 epsilon = 1.0
 eps_end = 0.1
 eps_decay = 0.995

@@ -35,7 +35,7 @@ class Args:
     """if toggled, `torch.backends.cudnn.deterministic=False`"""
     cuda: bool = True
     """if toggled, cuda will be enabled by default"""
-    track: bool = True
+    track: bool = False
     """if toggled, this experiment will be tracked with Weights and Biases"""
     wandb_project_name: str = "cleanRL"
     """the wandb's project name"""
@@ -75,7 +75,7 @@ class Args:
     """the ending epsilon for exploration"""
     exploration_fraction: float = 0.10
     """the fraction of `total-timesteps` it takes from start-e to go end-e"""
-    learning_starts: int = 80000
+    learning_starts: int = 8000
     """timestep to start learning"""
     train_frequency: int = 4
     """the frequency of training"""
@@ -303,6 +303,8 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
                 with torch.no_grad():
                     target_max, _ = target_network(data.next_observations.permute((0, 3, 1, 2))).max(dim=1)
                     td_target = data.rewards.flatten() + args.gamma * target_max * (1 - data.dones.flatten())
+                    print(data.rewards)
+                
                 old_val = q_network(data.observations.permute((0, 3, 1, 2))).gather(1, data.actions).squeeze()
                 loss = F.mse_loss(td_target, old_val)
 

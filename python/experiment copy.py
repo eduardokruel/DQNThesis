@@ -186,7 +186,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
 
     env = importlib.import_module(f"pettingzoo.atari.{args.env_id}").parallel_env(render_mode="rgb_array")
     env = ss.max_observation_v0(env, 2)
-    # env = ss.frame_skip_v0(env, 4)
+    env = ss.frame_skip_v0(env, 4)
     # env = ss.clip_reward_v0(env, lower_bound=-1, upper_bound=1)
     env = ss.color_reduction_v0(env, mode="B")
     env = ss.resize_v1(env, x_size=84, y_size=84)
@@ -231,8 +231,8 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     # TRY NOT TO MODIFY: start the game
     obs, _ = envs.reset(seed=args.seed)
     # print(obs[0].shape)
-    # with open('/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/python/test.npy', 'wb') as f:
-    #     np.save(f, obs)
+    with open('/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/python/test.npy', 'wb') as f:
+        np.save(f, obs)
     # print(np.moveaxis(obs[0:1],3,1).shape)
     for global_step in range(args.total_timesteps):
         # print(global_step)
@@ -251,7 +251,7 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         # print(next_obs.shape)
         
         if global_step == 1000:
-            with open('/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/python/test.npy', 'wb') as f:
+            with open('/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/python/test1.npy', 'wb') as f:
                 np.save(f, obs)
         
         # episode_reward = np.add(episode_reward,rewards)
