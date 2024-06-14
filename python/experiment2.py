@@ -23,7 +23,7 @@ from stable_baselines3.common.atari_wrappers import (
 )
 from stable_baselines3.common.buffers import ReplayBuffer
 from torch.utils.tensorboard import SummaryWriter
-
+import math
 
 @dataclass
 class Args:
@@ -109,6 +109,28 @@ class Args:
 
 
 # ALGO LOGIC: initialize agent here:
+
+class SharedBiasLinear(nn.Module):
+    def __init__(self, in_features, out_features):
+        super(SharedBiasLinear, self).__init__()
+        self.in_features = in_features
+        self.out_features = out_features
+        self.weight = nn.Parameter(torch.Tensor(out_features, in_features))
+        self.bias = nn.Parameter(torch.Tensor(1))  # Single shared bias
+
+        # Initialize parameters
+        self.reset_parameters()
+
+    def reset_parameters(self):
+        nn.init.kaiming_uniform_(self.weight, a=math.sqrt(5))
+        fan_in, _ = nn.init._calculate_fan_in_and_fan_out(self.weight)
+        bound = 1 / math.sqrt(fan_in)
+        nn.init.uniform_(self.bias, -bound, bound)
+
+    def forward(self, x):
+        return torch.mm(x, self.weight.t()) + self.bias.expand_as(x.mm(self.weight.t()))
+
+
 class QNetwork(nn.Module):
     def __init__(self, env):
         super().__init__()
@@ -122,7 +144,7 @@ class QNetwork(nn.Module):
             nn.Flatten(),
             nn.Linear(3136, 512),
             nn.ReLU(),
-            nn.Linear(512, env.single_action_space.n),
+            SharedBiasLinear(512, env.single_action_space.n),
         )
 
     def forward(self, x):
