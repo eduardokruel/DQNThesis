@@ -254,6 +254,12 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
                 else:
                     rewards[i] += args.kill_reward
                 adjusted_episode_reward[i] += rewards[i]
+            elif rewards[i] % 10 == 2:
+                rewards[i] -= 2
+                episode_reward[i] += rewards[i]
+                rewards[i] -= 1000
+                print("Life Lost")
+                adjusted_episode_reward[i] += rewards[i]
             else:
                 episode_reward[i] += rewards[i]
                 adjusted_episode_reward[i] += rewards[i]
@@ -344,12 +350,12 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
         # for idx, episodic_return in enumerate(episodic_returns):
             # writer.add_scalar("eval/episodic_return", episodic_return, idx)
 
-        if args.upload_model:
-            from cleanrl_utils.huggingface import push_to_hub
+        # if args.upload_model:
+        #     from cleanrl_utils.huggingface import push_to_hub
 
-            repo_name = f"{args.env_id}-{args.exp_name}-seed{args.seed}"
-            repo_id = f"{args.hf_entity}/{repo_name}" if args.hf_entity else repo_name
-            push_to_hub(args, episodic_returns, repo_id, "DQN", f"runs/{run_name}", f"videos/{run_name}-eval")
+        #     repo_name = f"{args.env_id}-{args.exp_name}-seed{args.seed}"
+        #     repo_id = f"{args.hf_entity}/{repo_name}" if args.hf_entity else repo_name
+        #     push_to_hub(args, episodic_returns, repo_id, "DQN", f"runs/{run_name}", f"videos/{run_name}-eval")
 
     envs.close()
     writer.close()
