@@ -276,12 +276,6 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
                 else:
                     rewards[i] += args.kill_reward
                 adjusted_episode_reward[i] += rewards[i]
-            elif rewards[i] % 10 == 2:
-                rewards[i] -= 2
-                episode_reward[i] += rewards[i]
-                rewards[i] -= 1000
-                print("Life Lost")
-                adjusted_episode_reward[i] += rewards[i]
             else:
                 episode_reward[i] += rewards[i]
                 adjusted_episode_reward[i] += rewards[i]
@@ -307,6 +301,11 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
             episode_reward = np.zeros(2)
             adjusted_episode_reward = np.zeros(2)
             episode_kills = np.zeros(2)
+            
+            # reset seeds
+            
+            action_space1 = gym.spaces.Discrete(9,seed=args.seed)
+            obs, _ = envs.reset(seed=args.seed)
         if "final_info" in infos:
             for info in infos["final_info"]:
                 if info and "episode" in info:

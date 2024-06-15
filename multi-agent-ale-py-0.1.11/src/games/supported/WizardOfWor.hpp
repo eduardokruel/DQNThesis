@@ -93,6 +93,8 @@ class WizardOfWorSettings : public RomSettings2P {
   reward_t m_score_p2;
   int m_lives;
   int m_lives_p2;
+  int oldLives;
+  int oldLivesP2;
 };
 
 }  // namespace ale

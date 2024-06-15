@@ -255,6 +255,16 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
                 else:
                     rewards[i] += args.kill_reward
                 adjusted_episode_reward[i] += rewards[i]
+            elif rewards[i] % 10 == 2:
+                rewards[i] -= 2
+                episode_reward[i] += rewards[i]
+                rewards[i] -= 1000
+                # print("Life Lost")
+                # with open('/Users/eduardokruel/Documents/GitHub/slurm-bpai-tutorial/python/test.npy', 'wb') as f:
+                #     np.save(f, next_obs)
+                adjusted_episode_reward[i] += rewards[i]
+            elif rewards[i] % 10 == 3 or rewards[i] % 10 == 5:
+                print("Waiting")
             else:
                 episode_reward[i] += rewards[i]
                 adjusted_episode_reward[i] += rewards[i]

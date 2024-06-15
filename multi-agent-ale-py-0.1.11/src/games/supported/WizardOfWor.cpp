@@ -73,13 +73,6 @@ void WizardOfWorSettings::step(const System& system) {
     m_reward_p2 += 1;
   }
 
-  if (m_lives > newLives) {
-    m_reward += 2;
-  }
-
-  if (m_lives_p2 > newLivesP2) {
-    m_reward_p2 += 2;
-  }
   m_terminal = newLives == -1 && byte1 == 0xF8 && (newLivesP2 == -1 || !is_two_player);
 
   // Wizard of Wor decreases the life total when we move into the play field; we only
