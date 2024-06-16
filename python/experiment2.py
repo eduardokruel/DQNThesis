@@ -53,7 +53,7 @@ class Args:
     # Algorithm specific arguments
     env_id: str = "wizard_of_wor_v3"
     """the id of the environment"""
-    total_timesteps: int = 6000000
+    total_timesteps: int = 8000000
     """total timesteps of the experiments"""
     learning_rate: float = 1e-4
     """the learning rate of the optimizer"""
